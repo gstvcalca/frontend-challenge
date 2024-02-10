@@ -13,7 +13,7 @@ const CartCount = styled.span`
 
     margin-left: -10px;
     font-size: 12px;
-    
+    vertical-align: bottom;
     `
 
 const CartContainer = styled.div`
@@ -21,12 +21,12 @@ const CartContainer = styled.div`
 `
 
 export function CartControl(){
-    const {value} = useLocalStorage('cart-items')
+    const CartItems = useLocalStorage('cart-items')
 
     return (
         <CartContainer>
             <CartIcon/>
-                {value.length && <CartCount>{value.length}</CartCount>}
+                {CartItems.length && <CartCount>{CartItems.length}</CartCount>}
         </CartContainer>
     )
 }
