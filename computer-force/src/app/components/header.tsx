@@ -6,10 +6,6 @@ import { PrimaryInput, PrimaryInputWithSearchIcon } from "./primary-input";
 import { CartControl } from "./cart-control";
 import { useFilter } from "@/hooks/useFilter";
 
-interface HeaderProps {
-
-}
-
 const saira_one = Saira_Stencil_One({ 
     weight: ['400'],
     subsets: ["latin"] });
@@ -38,7 +34,7 @@ const Logo = styled.a`
 
 `
 
-export function Header(props: HeaderProps){
+export function Header(){
     const {setSearch, search} = useFilter();
     return (
         <TagHeader>
@@ -46,7 +42,7 @@ export function Header(props: HeaderProps){
             <div>
                 <PrimaryInputWithSearchIcon 
                     value={search}
-                    handleChange={setSearch}
+                    HandleChange={setSearch}
                     placeholder="Procurando por algo específico?"/>
                 <CartControl/>
             </div>
