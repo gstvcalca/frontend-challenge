@@ -2,6 +2,8 @@
 
 import { Saira_Stencil_One } from "next/font/google";
 import styled from "styled-components"
+import { PrimaryInput, PrimaryInputWithSearchIcon } from "./primary-input";
+import { CartControl } from "./cart-control";
 
 interface HeaderProps {
 
@@ -17,6 +19,14 @@ const TagHeader = styled.header`
     justify-content: space-between;
     padding: 20px 160px;
 
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 24px;
+    }
+
 `
 
 const Logo = styled.a`
@@ -31,7 +41,10 @@ export function Header(props: HeaderProps){
     return (
         <TagHeader>
             <Logo className={saira_one.className}>Computer Force</Logo>
-            <div></div>
+            <div>
+                <PrimaryInputWithSearchIcon placeholder="Procurando por algo específico?"/>
+                <CartControl/>
+            </div>
         </TagHeader>
     )
 }
