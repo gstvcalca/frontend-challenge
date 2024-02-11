@@ -9,14 +9,6 @@ const PageWrapper = styled.main`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  min-height: 100vh;
-  background-color: var(--bg-primary);
-  
-  @media (min-width: ${props => props.theme.DesktopBreakpoint}) {
-    padding: 34px 160px;
-
-  }
 `
 
 export default function Home() {
