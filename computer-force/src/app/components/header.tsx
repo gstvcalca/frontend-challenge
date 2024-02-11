@@ -38,8 +38,11 @@ const Logo = styled.a`
     line-height: 150%;
 
     @media (min-width: ${props => props.theme.DesktopBreakpoint}){
-        font-size: 40px;
+        font-size: 24px;
+    }
 
+    @media (min-width: ${props => props.theme.TabletBreakpoint}){
+        font-size: 40px;
     }
 
 `

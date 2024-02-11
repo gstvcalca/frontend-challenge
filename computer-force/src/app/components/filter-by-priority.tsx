@@ -43,6 +43,7 @@ const PriorityFilter = styled.ul`
     padding: 12px 16px;
     list-style: none;
     top: 100%;
+    right: 8px;
 
     li {
         color: var(--text-dark);
@@ -60,6 +61,7 @@ const PriorityFilter = styled.ul`
     li:hover {
         background-color: var(--bg-secondary)
     }
+
 `
 export function FilterByPriority(props : FilterByPriorityProps){
     const [isOpen, setisOpen] = useState(false)

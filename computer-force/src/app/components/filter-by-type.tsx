@@ -15,14 +15,19 @@ interface FilterItemProps {
 const FilterItem = styled.li<FilterItemProps>`
     font-family: inherit;
     font-weight: ${props => props.selected ? '600' : '400'};
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 18px;
     text-align: center;
     text-transform: uppercase;
     color: var(--text-dark);
     cursor: pointer;
 
-    border-bottom: ${props => props.selected ? '4px solid var(--orange-low)' : ''}
+    border-bottom: ${props => props.selected ? '4px solid var(--orange-low)' : ''};
+
+    @media (min-width: ${props => props.theme.DesktopBreakpoint}){
+        font-size: 16px;
+        line-height: 22px;
+    }
 `
 
 const FilterList = styled.ul`
