@@ -5,8 +5,7 @@ import { GoBackButton } from './../components/go-back-button';
 import { Product } from './../../types/product';
 import { useProduct } from "@/hooks/useProduct";
 import { FormatPrice } from './../utils/format-price';
-import { GoBackIcon } from "../components/icons/go-back-icon";
-import { CartIcon } from "../components/icons/cart-icon";
+import { CartIconWhite } from "../components/icons/cart-icon-white";
 
 const Container = styled.div `
     display: flex;
@@ -20,37 +19,36 @@ const Container = styled.div `
         width: 100%;
         gap: 32px;
         margin-top: 24px;
+
+        > div {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+            button {
+                text-transform: uppercase;
+                background: #115d8c;
+                mix-blend-mode: multiply;
+                border-radius: 4px;
+                color: white;
+                border: none;
+                cursor: pointer;
+                padding: 10px 0;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                max-width: 448px;
+            }
+        }
     }
 
     img {
         max-width: 640px;
         width: 50%;
-    }
-
-    > div {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        height: 100%;
-
-        button {
-            text-transform: uppercase;
-            background: #115d8c;
-            mix-blend-mode: multiply;
-            border-radius: 4px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px 0;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            
-        }
     }
 
 `
@@ -106,8 +104,28 @@ const ProductInfo = styled.div`
 
 export default function Product({searchParams}: {searchParams: {id: string}}){
     const {data} = useProduct(searchParams.id)
-    console.log(searchParams.id)
-    console.log(data)
+    const handleAddToCart = () => {
+        let CartString = localStorage.getItem('cart-items')
+        if (CartString) {
+            let CartArray = JSON.parse(CartString);
+            
+            let existingProduct = CartArray.findIndex((item: { id: string; }) => item.id === searchParams.id);
+
+            if(existingProduct != -1){
+                CartArray[existingProduct].quantity += 1;
+            } else {
+                CartArray.push({...data, quantity: 1, id: searchParams.id})
+            }
+
+            localStorage.setItem('cart-items', JSON.stringify(CartArray))
+        } else {
+            const newCart = [{
+                    ...data,
+                    id: searchParams.id,
+                    quantity: 1}]
+            localStorage.setItem('cart-items', JSON.stringify(newCart))
+        }
+    }
     return(
         <Container>
             <GoBackButton navigate='/'/>
@@ -124,8 +142,8 @@ export default function Product({searchParams}: {searchParams: {id: string}}){
                             <p>{data?.description}</p>
                         </div>
                     </ProductInfo>
-                    <button>
-                        <CartIcon/>
+                    <button onClick={handleAddToCart}>
+                        <CartIconWhite/>
                         Adicionar ao carrinho</button>
                 </div>
             </section>

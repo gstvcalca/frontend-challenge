@@ -1,20 +1,17 @@
-"use client"
-
 import { useEffect, useState } from "react";
-import { json } from "stream/consumers";
 
-export function useLocalStorage<T>(key: string, initialValue: T){    
-    const [value, setValue] = useState<T>(JSON.parse(localStorage.getItem(key) ?? ''))
+export function useLocalStorage<T>(item: string, initialValue: T){
+    const [value, setValue] = useState<T>(initialValue)
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
-        let value = localStorage.getItem(key)
-        if (value) setValue(JSON.parse(value))
-    }, [key])
+        let value = localStorage.getItem(item)
+        if(value) setValue(JSON.parse(value))
+    }, [window])
 
     const updateLocalStorage = (newValue: T) => {
         setValue(newValue);
-        localStorage.setItem(key, JSON.stringify(newValue));   
+        localStorage.setItem(item,JSON.stringify(newValue));
     }
 
     return {
