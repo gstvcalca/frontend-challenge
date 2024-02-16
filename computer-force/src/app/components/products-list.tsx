@@ -10,7 +10,7 @@ const ListContainer = styled.div`
     gap: 32px;
     justify-content: space-between;
     max-width: 100%;
-
+    width: 100%;
     margin-top: 32px;
 `
 
