@@ -83,9 +83,6 @@ const SelectQuantity = styled.select`
     border-color: var(--border-color);
 `
 
-const CartResultContainer = styled.div`
-    
-`
 export function CartItem({product, handleUpdateQuantity, deleteItem} : CartItemProps){
     const handleChangeQuantity = (e: ChangeEvent<HTMLSelectElement>) => {
         handleUpdateQuantity(product.id, Number(e.target.value))

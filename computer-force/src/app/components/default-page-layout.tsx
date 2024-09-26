@@ -12,4 +12,4 @@ export const DefaultPageLayout = styled.div`
         padding: 34px 160px;
 
     }
-`
+` 

@@ -60,7 +60,7 @@ export function ProductCard(props: ProductCardProps){
     }
     return(
         <Card onClick={handleNavigate}>
-            <img src={props.image}/>
+            <img src={props.image} alt="teste"/>
             <div>
                 <h3>{props.title}</h3>
                 <Divider/>

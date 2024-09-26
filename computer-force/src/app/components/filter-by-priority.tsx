@@ -1,4 +1,4 @@
-import styled from "styled-components"
+    import styled from "styled-components"
 import { ArrowIcon } from "./icons/Arrow-icon"
 import { useState } from "react"
 import { useFilter } from "@/hooks/useFilter"
